@@ -9,20 +9,14 @@ const {VK} = require('vk-io');
 const messages = require("./message.json");
 const {checkUserInBlackList} = require("./src/func");
 global.vk = new VK({
-    token: 'bd0bad70d5169d9d298b705ca5e159f1a4d34dc272287969dc8da141892d84d517d06d0ab084e5c5f68ed',
+    token: 'a85e421554a847c2f5f639521088b00e081c8672b0604a73142277af05b23e9918016ff520cb0459aaf7e',
     pollingGroupId: 213308439,
     apiMode: 'parallel'
 });
 
 //====================== MongoDB ===========================================================
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://Leon_Markelovv:4wrEAGkK06ohFXAg@cluster0.p4yss.mongodb.net/?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
+global.mongoose = require('mongoose');
+mongoose.connect('Leon_Markelovv:4wrEAGkK06ohFXAg').then(() => logger.info.info("Подключение к БД - успешно!"))
 
 // Объявляем объект с командами
 
